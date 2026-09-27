@@ -29,22 +29,26 @@ def fig_payoff(d: dict, mostrar_absoluto: bool = False) -> go.Figure:
         f.add_trace(go.Scatter(x=L.taxa_H_pct, y=L.ntnb_absoluto, name="NTN-B absoluta (sem descontar CDI)",
                                line=dict(color=AZUL, width=1.5, dash="dash")))
     f.add_hline(y=0, line=dict(color="black", width=1))
-    rotulos = [("spot", f"spot {fmt_num(V['spot'])}%", CINZA, "top left", "dot"),
+    # spot, forward e strike ficam a ~1 bp entre si: spot no topo, forward/strike embaixo, afastados das linhas
+    rotulos = [("spot", f"spot {fmt_num(V['spot'])}%", CINZA, "top left", "dot", -4),
                ("forward", f"forward {fmt_num(V['forward'], 3)}%"
-                + (" = strike ATM" if abs(V["strike"] - V["forward"]) <= 1e-6 else ""), AZUL, "bottom right", "dot"),
-               ("cenario", f"cenário {fmt_num(V['cenario'])}%", VERDE, "top right", "dash")]
-    for k, txt, cor, pos, dash in rotulos:
+                + (" = strike ATM" if abs(V["strike"] - V["forward"]) <= 1e-6 else ""), AZUL, "bottom right", "dot", 8),
+               ("cenario", f"cenário {fmt_num(V['cenario'])}%", VERDE, "top right", "dash", 4)]
+    for k, txt, cor, pos, dash, dx in rotulos:
         f.add_vline(x=V[k], line=dict(color=cor, dash=dash, width=1.5), annotation_text=txt,
-                    annotation_position=pos, annotation_font_color=cor)
+                    annotation_position=pos, annotation_font_color=cor, annotation_xshift=dx)
     if abs(V["strike"] - V["forward"]) > 1e-6:
         f.add_vline(x=V["strike"], line=dict(color=LARANJA, dash="dot", width=1.5),
                     annotation_text=f"strike {fmt_num(V['strike'], 3)}%", annotation_position="bottom left",
-                    annotation_font_color=LARANJA)
+                    annotation_font_color=LARANJA, annotation_xshift=-8)
     for nome, cor in (("TRS", AZUL), ("Opção", LARANJA)):
         b = BE[nome]
-        f.add_trace(go.Scatter(x=[b["taxa"]], y=[0], mode="markers+text", marker=dict(size=11, color=cor, symbol="x"),
-                               text=[f"BE {fmt_num(b['delta_bps'], 1)} bp"], textposition="top center",
-                               textfont=dict(color=cor), showlegend=False, hoverinfo="skip"))
+        f.add_trace(go.Scatter(x=[b["taxa"]], y=[0], mode="markers", marker=dict(size=11, color=cor, symbol="x"),
+                               showlegend=False, hoverinfo="skip"))
+        # BE do TRS cai sobre as linhas spot/forward: texto deslocado para a direita
+        f.add_annotation(x=b["taxa"], y=0, text=f"BE {fmt_num(b['delta_bps'], 1)} bp", showarrow=False,
+                         font=dict(color=cor), yanchor="bottom", yshift=8,
+                         xanchor="left" if nome == "TRS" else "center", xshift=14 if nome == "TRS" else 0)
     f.add_trace(go.Scatter(x=[V["cenario"]] * 2, y=[C["ntnb_trs"], C["opcao"]], mode="markers",
                            marker=dict(size=10, color=[AZUL, LARANJA], line=dict(color="black", width=1)),
                            showlegend=False,
@@ -73,7 +77,7 @@ def fig_preco_taxa(d: dict) -> go.Figure:
                           f"<br>o PU fica {fmt_brl(c.convexidade.iloc[0], 0)}/título acima da tangente"
                           "<br>→ ganha mais na queda do que perde na alta")
     f.update_layout(**_LAYOUT, title=f"2. PU × taxa real hoje — DV01 {fmt_brl(s['dv01_titulo'], 3)}/título/bp, "
-                                     f"convexidade {fmt_num(s['convexidade'], 1)}",
+                                     f"convexidade {fmt_num(s['convexidade'], 1)} anos²",
                     xaxis_title="Taxa real (% a.a.)", yaxis_title="PU (R$ por título)",
                     legend=dict(orientation="h", y=-0.2), height=500)
     f.update_yaxes(tickformat=",.0f")
@@ -125,9 +129,11 @@ def fig_historico(d: dict) -> go.Figure:
     f.add_annotation(x=fim, y=L.inf.iloc[-1], text=f"{fmt_num(L.inf.iloc[-1])}%", showarrow=False, xanchor="left")
     f.update_layout(**_LAYOUT, title="5. Histórico da taxa real da NTN-B 2050 e faixa de ±1σ para o horizonte",
                     yaxis_title="Taxa real (% a.a.)", legend=dict(orientation="h", y=-0.15), height=480)
-    f.update_xaxes(range=["2024-01-01", (fim + pd.Timedelta(days=45)).strftime("%Y-%m-%d")],
-                   rangeselector=dict(buttons=[dict(count=1, label="1 ano", step="year", stepmode="backward"),
-                                               dict(count=3, label="3 anos", step="year", stepmode="backward"),
-                                               dict(step="all", label="desde 2012")]))
-    f.update_yaxes(range=[5.0, 8.3])
+    ini = pd.Timestamp("2024-01-01")
+    f.update_xaxes(range=[ini.strftime("%Y-%m-%d"), (fim + pd.Timedelta(days=45)).strftime("%Y-%m-%d")],
+                   tickformat="%m/%Y")
+    # Plotly não refaz o autorange de y ao fixar a janela de x: calcula o intervalo só com os dados visíveis
+    vis = pd.concat([s.taxa_venda[s.data >= ini], L.sup[L.data >= ini], L.inf[L.data >= ini]])
+    folga = 0.05 * (vis.max() - vis.min())
+    f.update_yaxes(range=[float(vis.min() - folga), float(vis.max() + folga)])
     return f

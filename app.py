@@ -47,13 +47,15 @@ r = D.resumo(cen)
 
 # ------------------------------------------------------------------ cabeçalho
 st.title("Queda da taxa real da NTN-B 2050: três formas de expressar a mesma visão")
-st.caption(f"Data de referência 25/09/2026 · horizonte 28/12/2026 ({r['du_horizonte']} DU) · "
-           f"notional {D.fmt_brl(notional)} · curva {D.CURVAS[curva]} · σ = {D.fmt_num(sigma, 0)} bps/ano · "
-           "P&L > 0 = ganho do cliente; valores em R$ no horizonte, **em excesso ao CDI**.")
+# "$" é delimitador de LaTeX no markdown do Streamlit: escapar os de "R$"
+st.caption((f"Data de referência 25/09/2026 · horizonte 28/12/2026 ({r['du_horizonte']} DU) · "
+            f"notional {D.fmt_brl(notional)} · curva {D.CURVAS[curva]} · σ = {D.fmt_num(sigma, 0)} bps/ano · "
+            "P&L > 0 = ganho do cliente; valores em R$ no horizonte, **em excesso ao CDI**.").replace("$", "\\$"))
 c = st.columns(5)
 c[0].metric("Taxa real spot", f"{D.fmt_num(r['taxa_spot'])}%")
+# delta com hífen ASCII: com "−" (U+2212) o Streamlit não reconhece o sinal e desenha a seta para cima
 c[1].metric("Taxa real forward (28/12)", f"{D.fmt_num(r['taxa_forward'], 3)}%",
-            f"{D.fmt_num((r['taxa_forward'] - r['taxa_spot']) * 100, 2)} bp", delta_color="off")
+            f"{D.fmt_num((r['taxa_forward'] - r['taxa_spot']) * 100, 2).replace('−', '-')} bp", delta_color="off")
 c[2].metric("Ganho por bp de queda (NTN-B/TRS)", D.fmt_brl(r["dv01"]))
 c[3].metric("Carry do TRS até 28/12", D.fmt_brl(r["carry_trs"]))
 c[4].metric("Prêmio da opção (hoje)", D.fmt_brl(r["premio"]))
