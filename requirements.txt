@@ -1,0 +1,8 @@
+numpy
+pandas
+scipy
+xlrd            # só para regenerar data/feriados_anbima.csv a partir do .xls
+streamlit>=1.40
+plotly>=5,<6    # <6 apenas para exportar PNG com kaleido 0.2.1 (prints); o app roda com qualquer versão
+kaleido==0.2.1  # opcional: exportar prints
+pytest

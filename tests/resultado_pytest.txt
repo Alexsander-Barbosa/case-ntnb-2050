@@ -1,0 +1,316 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-9.1.1, pluggy-1.6.0 -- /usr/bin/python3
+cachedir: .pytest_cache
+rootdir: /home/claude/case2
+configfile: pytest.ini
+testpaths: tests
+plugins: anyio-4.15.1
+collecting ... collected 160 items
+
+tests/test_app.py::test_app_roda_sem_excecao 2026-09-26 23:45:30.662 WARNING streamlit.runtime.scriptrunner_utils.script_run_context: Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+PASSED
+tests/test_app.py::test_app_metricas_topo 
+Taxa real spot: 7,38%
+Taxa real forward (28/12): 7,371%
+Ganho por bp de queda (NTN-B/TRS): R$ 11.203
+Carry do TRS até 28/12: −R$ 10.054
+Prêmio da opção (hoje): R$ 152.106
+PASSED
+tests/test_app.py::test_app_premissa_ilustrativa_na_tela PASSED
+tests/test_app.py::test_app_widgets_estresse_curva_a_strike PASSED
+tests/test_app_data.py::test_fmt_brl PASSED
+tests/test_app_data.py::test_construir_cenarios_curvas PASSED
+tests/test_app_data.py::test_resumo_referencias PASSED
+tests/test_app_data.py::test_payoff PASSED
+tests/test_app_data.py::test_preco_taxa PASSED
+tests/test_app_data.py::test_heatmap PASSED
+tests/test_app_data.py::test_tabela_metricas PASSED
+tests/test_app_data.py::test_waterfall_soma[-100] PASSED
+tests/test_app_data.py::test_waterfall_soma[-50] PASSED
+tests/test_app_data.py::test_waterfall_soma[0] PASSED
+tests/test_app_data.py::test_waterfall_soma[50] PASSED
+tests/test_app_data.py::test_historico PASSED
+tests/test_app_data.py::test_tabela_premissas_cobre_todas_as_constantes PASSED
+tests/test_app_data.py::test_parametros_propagam PASSED
+tests/test_calendar.py::test_du_exemplo_stn_ntnb[d20-61] PASSED
+tests/test_calendar.py::test_du_exemplo_stn_ntnb[d21-190] PASSED
+tests/test_calendar.py::test_du_exemplo_stn_ntnb[d22-314] PASSED
+tests/test_calendar.py::test_du_exemplo_stn_ntnb[d23-439] PASSED
+tests/test_calendar.py::test_du_exemplo_stn_ntnb[d24-564] PASSED
+tests/test_calendar.py::test_du_exemplo_stn_ltn PASSED
+tests/test_calendar.py::test_du_exemplo_stn_lft PASSED
+tests/test_calendar.py::test_feriados_nao_sao_du PASSED
+tests/test_calendar.py::test_du_convencao_inclusive_exclusive PASSED
+tests/test_calendar.py::test_add_du PASSED
+tests/test_calendar.py::test_fora_da_cobertura PASSED
+tests/test_curva_di.py::test_csv_74_vertices PASSED
+tests/test_curva_di.py::test_curva_reproduz_vertices 
+maior erro nos 74 vértices: 1.515e-12 p.p.
+PASSED
+tests/test_curva_di.py::test_curva_flat_cdi_medio_constante[d10-d20] PASSED
+tests/test_curva_di.py::test_curva_flat_cdi_medio_constante[d11-d21] PASSED
+tests/test_curva_di.py::test_curva_flat_cdi_medio_constante[d12-d22] PASSED
+tests/test_curva_di.py::test_curva_flat_cdi_medio_constante[d13-d23] PASSED
+tests/test_curva_di.py::test_flat_forward_constante_entre_vertices[44-54] 
+44->54 DU: forward=13.52601046%  diários min=13.52601046 max=13.52601046
+PASSED
+tests/test_curva_di.py::test_flat_forward_constante_entre_vertices[104-114] 
+104->114 DU: forward=13.54000000%  diários min=13.54000000 max=13.54000000
+PASSED
+tests/test_curva_di.py::test_flat_forward_constante_entre_vertices[66-75] 
+66->75 DU: forward=13.46669357%  diários min=13.46669357 max=13.46669357
+PASSED
+tests/test_curva_di.py::test_cdi_medio_horizonte_padrao 
+CDI médio 25/09->28/12 (curva B) = 13.550000%
+PASSED
+tests/test_curva_di.py::test_antes_do_primeiro_vertice_usa_cdi PASSED
+tests/test_curva_di.py::test_limites PASSED
+tests/test_ntnb_pu.py::test_exemplo_stn_ntnb_completo PASSED
+tests/test_ntnb_pu.py::test_fluxos_2050 PASSED
+tests/test_ntnb_pu.py::test_cupom_na_data_de_liquidacao_nao_entra PASSED
+tests/test_ntnb_pu.py::test_pu_venda_d0_vs_oficial[dia0] 
+2024-01-02 Venda D+0: VNA=4183.695222 (amp 0.0092) calc=4521.139527 oficial=4521.14 dif=-0.000473
+PASSED
+tests/test_ntnb_pu.py::test_pu_venda_d0_vs_oficial[dia1] 
+2025-03-12 Venda D+0: VNA=4456.142983 (amp 0.0095) calc=3738.142488 oficial=3738.14 dif=+0.002488
+PASSED
+tests/test_ntnb_pu.py::test_pu_venda_d0_vs_oficial[dia2] 
+2026-08-14 Venda D+0: VNA=4742.628635 (amp 0.0076) calc=4050.636433 oficial=4050.64 dif=-0.003567
+PASSED
+tests/test_ntnb_pu.py::test_pu_venda_d0_vs_oficial[dia3] 
+2026-08-17 Venda D+0: VNA=4742.126945 (amp 0.0075) calc=3924.252310 oficial=3924.25 dif=+0.002310
+PASSED
+tests/test_ntnb_pu.py::test_pu_venda_d0_vs_oficial[dia4] 
+2026-09-25 Venda D+0: VNA=4736.374859 (amp 0.0096) calc=4076.564686 oficial=4076.56 dif=+0.004686
+PASSED
+tests/test_ntnb_pu.py::test_pu_compra_d1_vs_oficial[dia0] 
+2024-01-02 Compra D+1: VNA=4184.370359 (amp 0.0027) calc=4594.158301 oficial=4594.16 dif=-0.001699
+PASSED
+tests/test_ntnb_pu.py::test_pu_compra_d1_vs_oficial[dia1] 
+2025-03-12 Compra D+1: VNA=4458.215341 (amp 0.0100) calc=3792.536917 oficial=3792.54 dif=-0.003083
+PASSED
+tests/test_ntnb_pu.py::test_pu_compra_d1_vs_oficial[dia2] 
+2026-08-14 Compra D+1: VNA=4742.125264 (amp 0.0058) calc=3963.795502 oficial=3963.80 dif=-0.004498
+PASSED
+tests/test_ntnb_pu.py::test_pu_compra_d1_vs_oficial[dia3] 
+2026-08-17 Compra D+1: VNA=4741.817847 (amp 0.0094) calc=3978.005828 oficial=3978.01 dif=-0.004172
+PASSED
+tests/test_ntnb_pu.py::test_pu_compra_d1_vs_oficial[dia4] 
+2026-09-25 Compra D+1: VNA=4739.019465 (amp 0.0077) calc=4135.405816 oficial=4135.41 dif=-0.004184
+PASSED
+tests/test_ntnb_pu.py::test_pu_venda_todo_regime_atual 
+Backtest 688 dias: |dif| média=0.002782 máx=0.008678 p99=0.007335
+PASSED
+tests/test_ntnb_sens.py::test_dv01_analitico_vs_bump[liq0-7.38] 
+2026-09-25 7.38%: DV01 analít=0.0964238503 bump=0.0964239089 rel=+6.08e-07
+PASSED
+tests/test_ntnb_sens.py::test_dv01_analitico_vs_bump[liq1-4.0] 
+2026-09-25 4.0%: DV01 analít=0.1801218908 bump=0.1801220203 rel=+7.19e-07
+PASSED
+tests/test_ntnb_sens.py::test_dv01_analitico_vs_bump[liq2-10.0] 
+2026-09-25 10.0%: DV01 analít=0.0621090948 bump=0.0621091274 rel=+5.25e-07
+PASSED
+tests/test_ntnb_sens.py::test_dv01_analitico_vs_bump[liq3-5.6] 
+2024-01-02 5.6%: DV01 analít=0.1403255781 bump=0.1403256877 rel=+7.81e-07
+PASSED
+tests/test_ntnb_sens.py::test_dv01_analitico_vs_bump[liq4-7.38] 
+2050-02-14 7.38%: DV01 analít=0.0045920153 bump=0.0045920153 rel=+5.40e-09
+PASSED
+tests/test_ntnb_sens.py::test_convexidade_analitica_vs_bump[liq0-7.38] PASSED
+tests/test_ntnb_sens.py::test_convexidade_analitica_vs_bump[liq1-4.0] PASSED
+tests/test_ntnb_sens.py::test_convexidade_analitica_vs_bump[liq2-10.0] PASSED
+tests/test_ntnb_sens.py::test_convexidade_analitica_vs_bump[liq3-5.6] PASSED
+tests/test_ntnb_sens.py::test_convexidade_analitica_vs_bump[liq4-7.38] PASSED
+tests/test_ntnb_sens.py::test_dv01_pricer_oficial_vs_analitico 
+DV01 R$/título: analít=4.566995 bump oficial=4.565865
+PASSED
+tests/test_ntnb_sens.py::test_sinais_e_consistencia PASSED
+tests/test_ntnb_sens.py::test_continua_proxima_da_oficial PASSED
+tests/test_ntnb_sens.py::test_inversa_taxa PASSED
+tests/test_ntnb_vna.py::test_vna_numero_indice 
+VNA 15/09=4727.570573 VNA 25/09=4736.378949 (implícito 4736.374859, dif +0.004090) PU=4076.568206 oficial=4076.56 dif=+0.008206
+PASSED
+tests/test_ntnb_vna.py::test_vna_projetado_ramos[liq0-esperado0] 
+2027-01-10: 4749.764898
+PASSED
+tests/test_ntnb_vna.py::test_vna_projetado_ramos[liq1-esperado1] 
+2026-12-20: 4731.830643
+PASSED
+tests/test_ntnb_vna.py::test_vna_projetado_ramos[liq2-esperado2] 
+2026-12-15: 4727.570573
+PASSED
+tests/test_ntnb_vna.py::test_vna_projetado_ramo_dezembro_formula_independente PASSED
+tests/test_ntnb_vna.py::test_dv01_notional 
+DV01/título=4.566995  títulos=2453.05  DV01 R$10mi=11203.06
+PASSED
+tests/test_option.py::test_premissas_vol PASSED
+tests/test_option.py::test_forward 
+y_f = 7.371118%  (-0.888 bp vs spot)  DF=0.969220  T=0.246032
+PASSED
+tests/test_option.py::test_forward_coerente_com_carry_do_trs PASSED
+tests/test_option.py::test_quadratura_vs_adaptativa 
+GL96=152,105.6255  quad=152,105.6255  dif=+2.62e-10   (Gauss-Hermite puro n=200: 152,348.76, erro +243.13)
+PASSED
+tests/test_option.py::test_premio_maior_igual_intrinseco[7.2-70.0] PASSED
+tests/test_option.py::test_premio_maior_igual_intrinseco[7.2-100.0] PASSED
+tests/test_option.py::test_premio_maior_igual_intrinseco[7.2-1.0] PASSED
+tests/test_option.py::test_premio_maior_igual_intrinseco[7.2-0.01] PASSED
+tests/test_option.py::test_premio_maior_igual_intrinseco[None-70.0] PASSED
+tests/test_option.py::test_premio_maior_igual_intrinseco[None-100.0] PASSED
+tests/test_option.py::test_premio_maior_igual_intrinseco[None-1.0] PASSED
+tests/test_option.py::test_premio_maior_igual_intrinseco[None-0.01] PASSED
+tests/test_option.py::test_premio_maior_igual_intrinseco[7.55-70.0] PASSED
+tests/test_option.py::test_premio_maior_igual_intrinseco[7.55-100.0] PASSED
+tests/test_option.py::test_premio_maior_igual_intrinseco[7.55-1.0] PASSED
+tests/test_option.py::test_premio_maior_igual_intrinseco[7.55-0.01] PASSED
+tests/test_option.py::test_converge_ao_intrinseco_quando_vol_zero[7.2] 
+K=7.2: prêmio - intrínseco para σ=70,10,1,0.1,0: 77,415.3074, 3.9425, 0.0000, 0.0000, 0.0000
+PASSED
+tests/test_option.py::test_converge_ao_intrinseco_quando_vol_zero[None] 
+K=None: prêmio - intrínseco para σ=70,10,1,0.1,0: 152,105.6255, 21,727.8523, 2,172.7821, 217.2782, 0.0000
+PASSED
+tests/test_option.py::test_converge_ao_intrinseco_quando_vol_zero[7.55] 
+K=7.55: prêmio - intrínseco para σ=70,10,1,0.1,0: 72,512.5431, 2.0437, -0.0000, 0.0000, 0.0000
+PASSED
+tests/test_option.py::test_put_call_parity_em_pu[7.2-70.0] 
+σ=70.0 K=7.2000: C=77,415.3074 P=268,141.6140 C-P=-190,726.3067 DF*Q*(PUfwd-K_PU)=-190,726.3067
+PASSED
+tests/test_option.py::test_put_call_parity_em_pu[7.2-100.0] 
+σ=100.0 K=7.2000: C=138,219.5235 P=328,945.8302 C-P=-190,726.3067 DF*Q*(PUfwd-K_PU)=-190,726.3067
+PASSED
+tests/test_option.py::test_put_call_parity_em_pu[None-70.0] 
+σ=70.0 K=7.3711: C=152,105.6255 P=152,105.6255 C-P=-0.0000 DF*Q*(PUfwd-K_PU)=-0.0000
+PASSED
+tests/test_option.py::test_put_call_parity_em_pu[None-100.0] 
+σ=100.0 K=7.3711: C=217,309.9280 P=217,309.9280 C-P=-0.0000 DF*Q*(PUfwd-K_PU)=-0.0000
+PASSED
+tests/test_option.py::test_put_call_parity_em_pu[7.55-70.0] 
+σ=70.0 K=7.5500: C=265,904.0520 P=72,512.5431 C-P=193,391.5089 DF*Q*(PUfwd-K_PU)=193,391.5089
+PASSED
+tests/test_option.py::test_put_call_parity_em_pu[7.55-100.0] 
+σ=100.0 K=7.5500: C=324,421.0671 P=131,029.5582 C-P=193,391.5089 DF*Q*(PUfwd-K_PU)=193,391.5089
+PASSED
+tests/test_option.py::test_parity_quebra_sem_ajuste_de_convexidade 
+sem ajuste: C=158,090.47 P=146,539.07 quebra da parity=11,551.40  ajuste μ-y_f=1.051 bp
+PASSED
+tests/test_option.py::test_bachelier_vs_integracao_atm[70.0] 
+σ=70.0: exato=152,105.63  Bachelier 13.852 bp × DV01 × DF × Q = 152,094.74  dif=+10.88 (+0.0072%)
+PASSED
+tests/test_option.py::test_bachelier_vs_integracao_atm[100.0] 
+σ=100.0: exato=217,309.93  Bachelier 19.788 bp × DV01 × DF × Q = 217,278.21  dif=+31.72 (+0.0146%)
+PASSED
+tests/test_option.py::test_premio_atm_niveis 
+ATM forward: σ=70 -> R$ 152,105.63 (13.85 bp) | σ=100 -> R$ 217,309.93 (19.79 bp)
+PASSED
+tests/test_option.py::test_premio_crescente_no_strike_em_taxa PASSED
+tests/test_option.py::test_greeks_bump_vs_bachelier_e_sinais[70.0] 
+σ=70.0: delta bump=-5,736.81 bach=-5,601.52 | gamma bump=141.327 bach=131.334 | vega bump=2,173.25 bach=2,172.78  (R$/bp, R$/bp², R$ por bp/ano)
+PASSED
+tests/test_option.py::test_greeks_bump_vs_bachelier_e_sinais[100.0] 
+σ=100.0: delta bump=-5,794.75 bach=-5,601.52 | gamma bump=102.009 bach=91.934 | vega bump=2,173.73 bach=2,172.78  (R$/bp, R$/bp², R$ por bp/ano)
+PASSED
+tests/test_option.py::test_greeks_bump_convergido PASSED
+tests/test_option.py::test_queda_de_taxa_aumenta_call PASSED
+tests/test_option.py::test_cupom_antes_do_vencimento PASSED
+tests/test_scenarios.py::test_grade_formato PASSED
+tests/test_scenarios.py::test_premissa_margem_declarada PASSED
+tests/test_scenarios.py::test_delta_zero_trs_igual_carry PASSED
+tests/test_scenarios.py::test_ntnb_excesso_igual_trs_em_toda_grade 
+max |NTN-B excesso CDI - TRS| na grade = 3.725e-09
+PASSED
+tests/test_scenarios.py::test_ntnb_absoluto_menos_excesso_e_custo_do_cdi PASSED
+tests/test_scenarios.py::test_opcao_expira_fora_e_perda_limitada 
+prêmio=152,105.63  capitalizado=156,936.18  Δ_K=-0.8882 bp  pontos fora do dinheiro=21
+PASSED
+tests/test_scenarios.py::test_break_even_trs_igual_forward 
+BE TRS = -0.8882 bp   forward - spot = -0.8882 bp
+PASSED
+tests/test_scenarios.py::test_break_even_opcao 
+BE opção brentq=-14.5761 bp  aproximação linear=-14.7409 bp  (Q*DV01_H=11,328.91 R$/bp)
+PASSED
+tests/test_scenarios.py::test_monotonicidade_estrita_ntnb_trs[ntnb_excesso_cdi] PASSED
+tests/test_scenarios.py::test_monotonicidade_estrita_ntnb_trs[ntnb_absoluto] PASSED
+tests/test_scenarios.py::test_monotonicidade_estrita_ntnb_trs[trs] PASSED
+tests/test_scenarios.py::test_monotonicidade_opcao PASSED
+tests/test_scenarios.py::test_assimetria_convexidade[25-ntnb_excesso_cdi] 
+ntnb_excesso_cdi ±25 bp: ganho na queda=289,051.04  perda na alta=276,730.42  assimetria=12,320.63
+PASSED
+tests/test_scenarios.py::test_assimetria_convexidade[25-trs] 
+trs ±25 bp: ganho na queda=289,051.04  perda na alta=276,730.42  assimetria=12,320.63
+PASSED
+tests/test_scenarios.py::test_assimetria_convexidade[50-ntnb_excesso_cdi] 
+ntnb_excesso_cdi ±50 bp: ganho na queda=591,076.38  perda na alta=541,757.86  assimetria=49,318.52
+PASSED
+tests/test_scenarios.py::test_assimetria_convexidade[50-trs] 
+trs ±50 bp: ganho na queda=591,076.38  perda na alta=541,757.86  assimetria=49,318.52
+PASSED
+tests/test_scenarios.py::test_assimetria_convexidade[100-ntnb_excesso_cdi] 
+ntnb_excesso_cdi ±100 bp: ganho na queda=1,236,858.37  perda na alta=1,039,006.89  assimetria=197,851.49
+PASSED
+tests/test_scenarios.py::test_assimetria_convexidade[100-trs] 
+trs ±100 bp: ganho na queda=1,236,858.37  perda na alta=1,039,006.89  assimetria=197,851.49
+PASSED
+tests/test_scenarios.py::test_sinal_queda_de_taxa_ganho[ntnb_excesso_cdi] PASSED
+tests/test_scenarios.py::test_sinal_queda_de_taxa_ganho[ntnb_absoluto] PASSED
+tests/test_scenarios.py::test_sinal_queda_de_taxa_ganho[trs] PASSED
+tests/test_scenarios.py::test_sinal_queda_de_taxa_ganho[opcao] PASSED
+tests/test_scenarios.py::test_metricas 
+                capital  perda_maxima  perda_limitada                      perda_maxima_nota  break_even_bps  ganho_por_bp_queda_hoje
+estrutura                                                                                                                            
+NTN-B     10,000,000.00 -1,049,061.26           False  não limitada (valor na borda +100 bp)           -0.89                11,203.04
+TRS        1,000,000.00 -1,049,061.26           False  não limitada (valor na borda +100 bp)           -0.89                11,203.04
+Opção        152,105.63   -156,936.18            True        limitada ao prêmio capitalizado          -14.58                 5,736.81
+PASSED
+tests/test_scenarios.py::test_parametros_propagam PASSED
+tests/test_swap.py::test_vna_encadeado_horizonte 
+VNA 28/12/2026 = 4797.249379 (fórmula direta 4797.249381)
+PASSED
+tests/test_swap.py::test_vna_encadeado_sem_ipca_disponivel PASSED
+tests/test_swap.py::test_premissas_ipca_horizonte PASSED
+tests/test_swap.py::test_vna_horizonte_coerente_com_vna_ref PASSED
+tests/test_swap.py::test_nome_estrutura PASSED
+tests/test_swap.py::test_swap_vale_zero_na_contratacao[B] 
+curva B: V0 = 0.0000000000
+PASSED
+tests/test_swap.py::test_swap_vale_zero_na_contratacao[A] 
+curva A: V0 = 0.0000000000
+PASSED
+tests/test_swap.py::test_dimensionamento_vs_pu_oficial 
+Q=2453.0445  Q*PU_oficial - notional = R$ -5.2247
+PASSED
+tests/test_swap.py::test_taxa_fixa_fora_do_mercado_nao_vale_zero PASSED
+tests/test_swap.py::test_sem_choque_pnl_igual_carry[B] 
+curva B: carry=-10,054.38 (real 176,727.32 | ipca 130,796.95 | cdi -317,578.65)  total=-10,054.38  F_CDI=1.0317578648
+PASSED
+tests/test_swap.py::test_sem_choque_pnl_igual_carry[A] 
+curva A: carry=-12,289.17 (real 176,727.32 | ipca 130,796.95 | cdi -319,813.44)  total=-12,289.17  F_CDI=1.0319813443
+PASSED
+tests/test_swap.py::test_carry_forma_fechada_sem_dupla_contagem PASSED
+tests/test_swap.py::test_identidade_total_igual_carry_mais_marcacao[-100] PASSED
+tests/test_swap.py::test_identidade_total_igual_carry_mais_marcacao[-25] PASSED
+tests/test_swap.py::test_identidade_total_igual_carry_mais_marcacao[-1] PASSED
+tests/test_swap.py::test_identidade_total_igual_carry_mais_marcacao[1] PASSED
+tests/test_swap.py::test_identidade_total_igual_carry_mais_marcacao[25] PASSED
+tests/test_swap.py::test_identidade_total_igual_carry_mais_marcacao[100] PASSED
+tests/test_swap.py::test_horizonte_zero_pnl_igual_menos_dv01_vezes_delta[-1] 
+Δ=-1 bp: P&L=11,212.8738  -DV01*Δ=11,203.0422
+PASSED
+tests/test_swap.py::test_horizonte_zero_pnl_igual_menos_dv01_vezes_delta[1] 
+Δ=+1 bp: P&L=-11,193.2242  -DV01*Δ=-11,203.0422
+PASSED
+tests/test_swap.py::test_horizonte_zero_choque_grande_segunda_ordem[-50] 
+Δ=-50 bp: P&L=585,589.99  2ª ordem=584,714.20  só DV01=560,152.11
+PASSED
+tests/test_swap.py::test_horizonte_zero_choque_grande_segunda_ordem[50] 
+Δ=+50 bp: P&L=-536,417.17  2ª ordem=-535,590.02  só DV01=-560,152.11
+PASSED
+tests/test_swap.py::test_sinal_queda_de_taxa_ganho PASSED
+tests/test_swap.py::test_dv01_swap_igual_ntnb_mesmo_notional 
+DV01 swap=11,203.04  DV01 NTN-B R$10mi=11,203.06  dif=-0.02
+PASSED
+tests/test_swap.py::test_carry_curva_b_vs_flat 
+carry B=-10,054.38  A=-12,289.17  B-A=2,234.79  forma fechada=2,234.79
+PASSED
+tests/test_swap.py::test_cupom_no_horizonte_nao_suportado PASSED
+
+============================= 160 passed in 23.54s =============================
